@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app_tharawt/screens/home_page.dart';
+import 'package:todo_app_tharawt/views/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(brightness: Brightness.dark),
       initialRoute: HomePage.routName,
       routes: {HomePage.routName: (context) => HomePage()},
     );
