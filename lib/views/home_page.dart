@@ -7,6 +7,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(body: NotesViewBody()));
+    return SafeArea(
+      child: Scaffold(
+        body: NotesViewBody(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add, color: Colors.black),
+          backgroundColor: Colors.cyan,
+        ),
+      ),
+    );
   }
 }
