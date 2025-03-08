@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app_tharawt/widgets/custome_search_icon.dart';
-import 'package:todo_app_tharawt/widgets/notes_card.dart';
 import 'package:todo_app_tharawt/widgets/notes_listview.dart';
 
 class NotesViewBody extends StatelessWidget {

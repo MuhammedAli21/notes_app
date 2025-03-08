@@ -10,10 +10,21 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: NotesViewBody(),
+
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return AddNoteButtonSheet();
+              },
+            );
+          },
           child: Icon(Icons.add, color: Colors.black),
           backgroundColor: Colors.cyan,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
         ),
       ),
     );

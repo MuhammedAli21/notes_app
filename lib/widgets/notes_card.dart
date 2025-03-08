@@ -18,7 +18,7 @@ class NotesCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               ListTile(
-                contentPadding: EdgeInsets.all(0),
+                contentPadding: EdgeInsets.zero,
                 title: Text(
                   'Note',
                   style: TextStyle(color: Colors.black, fontSize: 26),
