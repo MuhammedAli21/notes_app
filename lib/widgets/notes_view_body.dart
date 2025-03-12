@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app_tharawt/views/edit_note_page.dart';
 import 'package:todo_app_tharawt/widgets/custome_search_icon.dart';
+import 'package:todo_app_tharawt/widgets/custome_serach_bar.dart';
 import 'package:todo_app_tharawt/widgets/notes_listview.dart';
 
 class NotesViewBody extends StatelessWidget {
@@ -17,13 +18,7 @@ class NotesViewBody extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Notes', style: TextStyle(fontSize: 28)),
-                  CustomeSearchIcon(),
-                ],
-              ),
+              CustomeSearchBar(title: 'Notes', icon: Icons.search),
               Expanded(child: NotesListView()),
             ],
           ),

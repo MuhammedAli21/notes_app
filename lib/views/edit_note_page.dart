@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_tharawt/widgets/custome_serach_bar.dart';
 import 'package:todo_app_tharawt/widgets/edit_note_body.dart';
 
 class EditNotePage extends StatelessWidget {
@@ -7,6 +8,6 @@ class EditNotePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: EditNoteBody());
+    return SafeArea(child: Scaffold(body: EditNoteBody()));
   }
 }
