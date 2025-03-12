@@ -10,18 +10,13 @@ class NotesViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(context, EditNotePage.routName);
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-          child: Column(
-            children: [
-              CustomeSearchBar(title: 'Notes', icon: Icons.search),
-              Expanded(child: NotesListView()),
-            ],
-          ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+        child: Column(
+          children: [
+            CustomeSearchBar(title: 'Notes', icon: Icons.search),
+            Expanded(child: NotesListView()),
+          ],
         ),
       ),
     );
