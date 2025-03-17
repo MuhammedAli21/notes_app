@@ -11,8 +11,9 @@ import 'package:todo_app_tharawt/views/home_page.dart';
 void main() async {
   Bloc.observer = SimpleBlocObserver();
   await Hive.initFlutter();
-  await Hive.openBox(kNotesBox);
   Hive.registerAdapter(NoteModelAdapter());
+  await Hive.openBox<NoteModel>(kNotesBox);
+
   runApp(MyApp());
 }
 
@@ -21,16 +22,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => AddNoteCubit())],
-      child: MaterialApp(
-        theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
-        initialRoute: HomePage.routName,
-        routes: {
-          HomePage.routName: (context) => HomePage(),
-          EditNotePage.routName: (context) => EditNotePage(),
-        },
-      ),
+    return MaterialApp(
+      theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
+      initialRoute: HomePage.routName,
+      routes: {
+        HomePage.routName: (context) => HomePage(),
+        EditNotePage.routName: (context) => EditNotePage(),
+      },
     );
   }
 }
