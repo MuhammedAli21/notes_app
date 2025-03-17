@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app_tharawt/views/edit_note_page.dart';
-import 'package:todo_app_tharawt/widgets/custome_search_icon.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app_tharawt/cubit/notes_cubit/notes_cubit.dart';
+
 import 'package:todo_app_tharawt/widgets/custome_serach_bar.dart';
 import 'package:todo_app_tharawt/widgets/notes_listview.dart';
 
@@ -9,14 +10,17 @@ class NotesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-        child: Column(
-          children: [
-            CustomeSearchBar(title: 'Notes', icon: Icons.search),
-            Expanded(child: NotesListView()),
-          ],
+    return BlocProvider(
+      create: (context) => NotesCubit(),
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+          child: Column(
+            children: [
+              CustomeSearchBar(title: 'Notes', icon: Icons.search),
+              Expanded(child: NotesListView()),
+            ],
+          ),
         ),
       ),
     );
