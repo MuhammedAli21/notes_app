@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_tharawt/models/note_model.dart';
 import 'package:todo_app_tharawt/views/edit_note_page.dart';
 
 class NotesCard extends StatelessWidget {
-  const NotesCard({super.key});
-
+  const NotesCard({super.key, required this.note});
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -14,7 +15,7 @@ class NotesCard extends StatelessWidget {
         padding: const EdgeInsets.only(top: 10),
         child: Container(
           decoration: BoxDecoration(
-            color: const Color(0xffFFCC80),
+            color: Color(note.color),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Padding(
@@ -25,13 +26,13 @@ class NotesCard extends StatelessWidget {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: Text(
-                    'Note',
+                    note.title,
                     style: TextStyle(color: Colors.black, fontSize: 26),
                   ),
                   subtitle: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: Text(
-                      'Entering date  ',
+                      note.content,
                       style: TextStyle(
                         color: Colors.black.withAlpha(150),
                         fontSize: 20,
@@ -46,7 +47,7 @@ class NotesCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'May, 12',
+                  note.date,
                   style: TextStyle(color: Colors.black.withAlpha(150)),
                 ),
               ],
