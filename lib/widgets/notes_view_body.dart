@@ -10,17 +10,14 @@ class NotesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotesCubit(),
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-          child: Column(
-            children: [
-              CustomeSearchBar(title: 'Notes', icon: Icons.search),
-              Expanded(child: NotesListView()),
-            ],
-          ),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+        child: Column(
+          children: [
+            CustomeSearchBar(title: 'Notes', icon: Icons.search),
+            Expanded(child: NotesListView()),
+          ],
         ),
       ),
     );
