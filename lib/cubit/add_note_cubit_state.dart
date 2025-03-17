@@ -5,7 +5,7 @@ sealed class AddNoteCubitState {}
 
 final class AddNoteCubitInitial extends AddNoteCubitState {}
 
-final class AddNoteCubLoading extends AddNoteCubitState {}
+final class AddNoteCubitLoading extends AddNoteCubitState {}
 
 final class AddNoteCubitSuccess extends AddNoteCubitState {}
 
