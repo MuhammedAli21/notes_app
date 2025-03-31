@@ -2,14 +2,14 @@
 
 ## 📌 Overview
 
-**Notes App** is a simple and efficient note-taking application built with **Flutter** and **Firebase**. It allows users to create, edit, and delete notes while seamlessly synchronizing data with **Firestore** for real-time updates.
+**Notes App** is a simple and efficient note-taking application built with **Flutter** and **Hive**. It allows users to create, edit, and delete notes while storing data locally using **Hive** for fast and efficient storage.
 
 ## 🚀 Features
 
 - 📝 **Create Notes**: Easily add new notes with a simple and intuitive interface.
 - ✏️ **Edit Notes**: Modify saved notes with real-time updates.
 - 🗑️ **Delete Notes**: Remove notes effortlessly when they are no longer needed.
-- ☁️ **Cloud Sync with Firebase Firestore**: Ensure data is stored securely and accessible across multiple devices.
+- 💾 **Local Storage with Hive**: Store notes efficiently without the need for an internet connection.
 - 🔍 **Search Functionality**: Quickly find notes using keywords.
 - 🎨 **Modern UI/UX Design**: A clean and responsive user interface.
 - 🌙 **Dark Mode Support**: Enhance readability with a built-in dark mode.
@@ -17,7 +17,7 @@
 ## 🛠️ Technologies Used
 
 - **Flutter (Dart)** – Framework for building cross-platform mobile applications.
-- **Firebase Firestore** – Cloud database for storing and synchronizing notes.
+- **Hive** – Lightweight and fast NoSQL database for local storage.
 - **Cubit (Bloc)** – State management for efficient data handling.
 - **Material Design Components** – Ensuring a visually appealing and user-friendly experience.
 
@@ -35,6 +35,8 @@ notes_app/
 │   ├── cubit/
 │   │   ├── notes_cubit.dart       # State management for notes using Cubit
 │   │   ├── notes_state.dart       # Different states for the notes Cubit
+│   ├── services/
+│   │   ├── hive_service.dart      # Hive database service
 │   ├── widgets/
 │   │   ├── note_item.dart         # UI widget for displaying a note
 │── pubspec.yaml                   # Dependency configuration
@@ -56,11 +58,25 @@ notes_app/
    flutter pub get
 ```
 
-### 3️⃣ Configure Firebase
+### 3️⃣ Initialize Hive
 
-- Set up a Firebase project and enable Firestore.
-- Download the `google-services.json` file and place it inside `android/app/`.
-- Download the `GoogleService-Info.plist` file and place it inside `ios/Runner/`.
+- Ensure you have the `hive` and `hive_flutter` dependencies installed.
+- Initialize Hive in the main function before running the app:
+
+```dart
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  runApp(MyApp());
+}
+```
+
+- Create an adapter for the `Note` model if necessary and register it before opening the box:
+
+```dart
+Hive.registerAdapter(NoteAdapter());
+await Hive.openBox<Note>('notesBox');
+```
 
 ### 4️⃣ Run the Application
 
@@ -82,7 +98,7 @@ We welcome contributions from the community! To contribute:
 - 📷 **Image Attachments**: Add support for attaching images to notes.
 - 🔔 **Reminder Notifications**: Set reminders for important notes.
 - 📂 **Note Categorization**: Organize notes into folders.
-- 💾 **Offline Support**: Enable note access without an internet connection.
+- ☁️ **Cloud Sync**: Optional cloud backup feature.
 
 ## 📜 License
 
