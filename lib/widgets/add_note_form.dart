@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:todo_app_tharawt/Constents.dart';
 import 'package:todo_app_tharawt/cubit/add_notes_cubit/add_note_cubit.dart';
 import 'package:todo_app_tharawt/models/note_model.dart';
 import 'package:todo_app_tharawt/widgets/custome_button.dart';
+import 'package:todo_app_tharawt/widgets/custome_color_list.dart';
 import 'package:todo_app_tharawt/widgets/custome_text_field.dart';
 
 class AddNoteForm extends StatefulWidget {
@@ -39,7 +41,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
               content = value;
             },
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 10),
+          SizedBox(height: 25 * 2, child: ColorsListView()),
+          SizedBox(height: 10),
           BlocBuilder<AddNoteCubit, AddNoteCubitState>(
             builder: (context, state) {
               return CustomeButton(
@@ -67,6 +71,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               );
             },
           ),
+          SizedBox(height: 15),
         ],
       ),
     );
