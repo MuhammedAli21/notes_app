@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:todo_app_tharawt/Constents.dart';
 import 'package:todo_app_tharawt/cubit/add_notes_cubit/add_note_cubit.dart';
 import 'package:todo_app_tharawt/models/note_model.dart';
 import 'package:todo_app_tharawt/widgets/custome_button.dart';
@@ -59,7 +58,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       title: title!,
                       content: content!,
                       date: formattedDate,
-                      color: Colors.amber.toARGB32(),
+                      color:
+                          BlocProvider.of<AddNoteCubit>(
+                            context,
+                          ).color!.toARGB32(),
                     );
                     BlocProvider.of<AddNoteCubit>(context).addNote(note);
                   } else {

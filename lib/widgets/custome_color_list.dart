@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app_tharawt/cubit/add_notes_cubit/add_note_cubit.dart';
 
 class CustomeColorsPicker extends StatelessWidget {
   const CustomeColorsPicker({
@@ -50,6 +52,7 @@ class _ColorsListViewState extends State<ColorsListView> {
             onTap: () {
               setState(() {
                 selectedIndex = index;
+                BlocProvider.of<AddNoteCubit>(context).color = colors[index];
               });
             },
             child: CustomeColorsPicker(
