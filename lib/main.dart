@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => NotesCubit()..fetchAllNotes()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
         initialRoute: HomePage.routName,
         routes: {HomePage.routName: (context) => HomePage()},
