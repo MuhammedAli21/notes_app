@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app_tharawt/cubit/notes_cubit/notes_cubit.dart';
 import 'package:todo_app_tharawt/models/note_model.dart';
 import 'package:todo_app_tharawt/views/edit_note_page.dart';
 
@@ -9,7 +11,14 @@ class NotesCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, EditNotePage.routName);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return EditNotePage(note: note);
+            },
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 10),
@@ -42,6 +51,7 @@ class NotesCard extends StatelessWidget {
                   trailing: IconButton(
                     onPressed: () {
                       note.delete();
+                      BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                     },
                     icon: Icon(Icons.delete),
                     color: Colors.black,

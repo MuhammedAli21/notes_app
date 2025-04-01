@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app_tharawt/cubit/notes_cubit/notes_cubit.dart';
+import 'package:todo_app_tharawt/models/note_model.dart';
 import 'package:todo_app_tharawt/widgets/custome_serach_bar.dart';
 import 'package:todo_app_tharawt/widgets/custome_text_field.dart';
 
-class EditNoteBody extends StatelessWidget {
-  const EditNoteBody({super.key});
+class EditNoteBody extends StatefulWidget {
+  const EditNoteBody({super.key, required this.note});
+  final NoteModel note;
 
+  @override
+  State<EditNoteBody> createState() => _EditNoteBodyState();
+}
+
+class _EditNoteBodyState extends State<EditNoteBody> {
+  String? title, content;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,11 +22,33 @@ class EditNoteBody extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
         child: Column(
           children: [
-            CustomeSearchBar(title: 'Edit Notes', icon: Icons.check),
+            CustomeSearchBar(
+              title: 'Edit Notes',
+              icon: Icons.check,
+              onPressed: () {
+                widget.note.title = title ?? widget.note.title;
+                widget.note.content = content ?? widget.note.content;
+
+                widget.note.save();
+                BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                Navigator.pop(context);
+              },
+            ),
             SizedBox(height: 50),
-            CustomeTextField(hint: 'Title'),
+            CustomeTextField(
+              hint: widget.note.title,
+              onChanged: (value) {
+                title = value;
+              },
+            ),
             SizedBox(height: 16),
-            CustomeTextField(hint: 'Content', maxLines: 10),
+            CustomeTextField(
+              hint: widget.note.content,
+              maxLines: 10,
+              onChanged: (value) {
+                content = value;
+              },
+            ),
           ],
         ),
       ),

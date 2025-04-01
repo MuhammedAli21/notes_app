@@ -29,10 +29,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
         initialRoute: HomePage.routName,
-        routes: {
-          HomePage.routName: (context) => HomePage(),
-          EditNotePage.routName: (context) => EditNotePage(),
-        },
+        routes: {HomePage.routName: (context) => HomePage()},
       ),
     );
   }
